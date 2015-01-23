@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
 
   validates_uniqueness_of :email
   validates_length_of :email, :within => 5..50
-  validates_format_of :email, :with => /^[^@][\w.-]+@[\w.-]+[.][a-z]{2,4}$/i
+  validates_format_of :email, :with => /[-0-9a-zA-Z.+_]+@[-0-9a-zA-Z.+_]+\.[a-zA-Z]{2,4}/
 
   validates_confirmation_of :password
   validates_length_of :password, within: 4..20
