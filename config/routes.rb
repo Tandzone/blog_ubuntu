@@ -3,7 +3,11 @@ Blog::Application.routes.draw do
   resources :articles do
     resources :comments
   end
-  resource :users
+  resources :users
+  resource :session, :only => [:new, :create, :destroy]
+
+  get '/login' => 'sessions#new', :as => "login"
+  get '/logout' => 'sessions#destroy', :as => "logout"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
