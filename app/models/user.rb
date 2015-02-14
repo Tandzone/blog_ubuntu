@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   validates_confirmation_of :password
   validates_length_of :password, within: 4..20
   validates_presence_of :password, :if => :password_required?
+  validates_presence_of :name
 
   has_one :profile
   has_many :articles, ->{order('published_at DESC, title ASC')},

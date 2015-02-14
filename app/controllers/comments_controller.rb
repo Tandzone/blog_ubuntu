@@ -4,6 +4,8 @@ class CommentsController < ApplicationController
 
   def create
     @comment = @article.comments.new(comment_params)
+    @comment.name = current_user.name
+    @comment.email = current_user.email
     if @comment.save
       redirect_to @article, notice: 'Thanks for your comment'
     else
@@ -11,23 +13,11 @@ class CommentsController < ApplicationController
     end
   end
 
-  def edit
-
-  end
-
   def destroy
     @article = current_user.articles.find(params[:article_id])
     @comment = @article.comments.find(params[:id])
     @comment.destroy
     redirect_to @article, notice: 'Comment dileted'
-  end
-
-  def update
-    if @comment.update
-      redirect_to @article
-    else
-      redirect_to @article
-    end
   end
 
   private

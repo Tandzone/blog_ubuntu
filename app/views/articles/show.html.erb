@@ -1,6 +1,10 @@
 <%= render @article %>
-<h3>Comments</h3>
-<div id="comments">
-  <%= render @article.comments %>
-</div>
+<% if @article.comments.any? %>
+    <h3>Comments</h3>
+    <div id="comments">
+      <%= render @article.comments %>
+    </div>
+<% end %>
+<% if logged_in? %>
 <%= render :file => 'comments/new' %>
+<% end %>
