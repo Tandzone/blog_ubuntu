@@ -1,5 +1,5 @@
 class Notifier < ActionMailer::Base
-  default from: "itanjn@gmail.com"
+  default :from => "from@example.com"
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
@@ -10,5 +10,6 @@ class Notifier < ActionMailer::Base
     @article = article
     @sender_name = sender_name
     mail :to => recever_mail, :subject => "Interesting Article"
+    Rails.logger.debug "recever_mail #{recever_mail}"
   end
 end
