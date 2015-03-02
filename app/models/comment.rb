@@ -13,6 +13,6 @@ class Comment < ActiveRecord::Base
   after_create :email_article_author
 
   def email_article_author
-    puts "We will notify #{article.user.email} in chapter 9"
+    Notifier.comment_added(self).deliver
   end
 end

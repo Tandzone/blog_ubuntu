@@ -64,8 +64,6 @@ class ArticlesController < ApplicationController
   end
 
   def notify_friend
-    Rails.logger.debug "### notify_friend ###"
-    Rails.logger.debug "gmail : #{ENV['GMAIL_TEST_USERNAME']}"
     @article = Article.find(params[:id]);
     Notifier.email_friend(@article, params[:name], params[:email]).deliver
     redirect_to @article, :notice => "Successfully sent a message to your friend"
@@ -75,7 +73,6 @@ class ArticlesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_article
       @article = Article.find(params[:id])
-      Rails.logger.debug "username: #{ENV['GMAIL_TEST_USERNAME']}"
     end
 
     def find_article
