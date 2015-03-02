@@ -13,6 +13,7 @@ class Comment < ActiveRecord::Base
   after_create :email_article_author
 
   def email_article_author
+    Rails.logger.debug "email_article_author"
     Notifier.comment_added(self).deliver
   end
 end

@@ -1,7 +1,7 @@
 <html>
 <body>
 <p>
-  @owner_name added a comment to one of your articles <i><%= @article.title %></i>.
+  <%= @owner_name.capitalize %> added a comment to one of your articles <i><%= @article.title %></i>.
   Go read the comment: <%= link_to @article.title, article_url(@article, :host => 'localhost:3000') %>.
 </p>
 </body>

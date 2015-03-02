@@ -12,7 +12,7 @@ class Notifier < ActionMailer::Base
 
     attachments["chelsea.jpg"] = File.read(Rails.root.join("public/images/chelsea.jpg"))
     mail :to => recever_mail, :subject => "Interesting Article"
-    Rails.logger.debug "recever_mail #{recever_mail}"
+
   end
 
   def comment_added(comment)
